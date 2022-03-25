@@ -40,8 +40,8 @@ function Days(props) {
         infoSection.days.map(day => {
             return (
                 <>
-                    <h2> {day.weekday} - {day.date} </h2>
-                    <p>
+                    <h2 key={day.id + day.weekday} > {day.weekday} - {day.date} </h2>
+                    <p key={"par" + day.id + day.weekday}>
                         <Showtimes showtimes={day.showtimes} />
                     </p>
 
