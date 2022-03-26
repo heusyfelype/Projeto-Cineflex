@@ -3,6 +3,8 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
 
+import Inputs from './Inputs';
+
 const Main = styled.main`
     padding: 100px;
 
@@ -74,27 +76,4 @@ function EachSeat(props) {
 
 }
 
-function Inputs(props) {
-    const { inputsSeats, infoSeats } = props
-    console.log(inputsSeats, infoSeats)
 
-    function getRandom() {
-        return Math.random();
-    }
-
-    return inputsSeats.length == 0 ? <p>Selecione um lugar</p> :
-        inputsSeats.map((input) => {
-            return (
-                <div key={getRandom()}>
-                    <h2>Assento {input}</h2>
-                    <div>
-                        <p>Nome do comprador:</p>
-                        <input type="text" placeholder='Digite o seu nome...' />
-                        <p>CPF do comprador:</p>
-                        <input type="text" placeholder='Digite o seu CPF...' />
-                        <button> Reservar </button>
-                    </div>
-                </div>
-            )
-        })
-}

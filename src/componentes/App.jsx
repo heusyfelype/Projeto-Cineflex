@@ -4,6 +4,7 @@ import Header from "./Header";
 import FirstScreen from "./FirstScreen";
 import SectionsMovie from "./SectionsMovie";
 import Seats from "./Seats";
+import Success from "./Success";
 
 export default function App() {
     return (
@@ -13,6 +14,7 @@ export default function App() {
                 <Route path="/" element={<FirstScreen />} />
                 <Route path="/filme/:idFilme" element={<SectionsMovie />} />
                 <Route path="/sessao/:idHora" element={<Seats />} />
+                <Route path="/sucesso" element={<Success />} />
             </Routes>
         </BrowserRouter>
     )
