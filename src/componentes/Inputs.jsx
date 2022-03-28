@@ -1,23 +1,71 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+const SelectPlace = styled.p`
+    padding-top: 30px;
+`
+
+const StyleInputs = styled.div`
+    margin-top: 40px;
+
+    h2{
+        font-weight: 700;
+        font-size: 24px;
+        padding-bottom: 10px;
+        color: #293845;
+    }
+
+    p{
+        font-size: 18px;
+        color: #293845;
+        padding: 10px 0px 5px 0px;
+    }
+
+    input{
+        width: 100%;
+        height: 50px;
+        background: #FFFFFF;
+        border: 1px solid #D5D5D5;
+        box-sizing: border-box;
+        border-radius: 3px;
+        font-size: 18px;
+        color: #AFAFAF;
+    }
+
+    button{
+        margin: 50px auto;
+        display: block;
+        width: 225px;
+        height: 42px;
+        left: 72px;
+        top: 688px;
+        background: #E8833A;
+        border-radius: 3px;
+        border: none;
+        font-size: 18px;
+        color: #FFFFFF;
+        cursor: pointer;
+    }
+
+`
 
 export default function Inputs(props) {
     const { inputsSeats, infoSeats } = props
-    console.log(infoSeats)
+
     let infosMovie = infoSeats
     let [infosTopost, setinfosTopost] = useState({ ids: [], compradores: [] });
 
-    return inputsSeats.length == 0 ? <p>Selecione um lugar</p> :
+    return inputsSeats.length == 0 ? <SelectPlace>Selecione um lugar</SelectPlace> :
         inputsSeats.map((number) => {
             return (
-                <div key={getRandom()}>
+                <StyleInputs key={getRandom()}>
                     <h2>Assento {number}</h2>
                     <div>
                         <EachInput infosMovie={infosMovie} number={number} inputsSeats={inputsSeats} infosTopost={infosTopost} setinfosTopost={setinfosTopost} />
                     </div>
-                </div>
+                </StyleInputs>
             )
         })
 }

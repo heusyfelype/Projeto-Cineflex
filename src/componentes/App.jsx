@@ -5,6 +5,7 @@ import FirstScreen from "./FirstScreen";
 import SectionsMovie from "./SectionsMovie";
 import Seats from "./Seats";
 import Success from "./Success";
+import "../css/reset.css"
 
 export default function App() {
     return (
