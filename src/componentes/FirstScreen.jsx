@@ -42,6 +42,7 @@ export default function FirstScreen() {
         request.then(response => {
             setMoviesList(response.data)
         })
+        request.catch(() =>{alert("Algo deu errado, por favor, recarregue a página!")})
     }, [])
 
 

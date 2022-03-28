@@ -58,7 +58,6 @@ export default function Success(props) {
     let infosMovie = navigate.state.infosMovie;
     let infosCustomer = navigate.state.infosCustomer;
 
-    console.log(props, navigate)
     return (
         <Main>
             <h2>Pedido feito <br /> com sucesso! </h2>
@@ -84,10 +83,8 @@ export default function Success(props) {
 
 function Assentos(props) {
     const { infosCustomer } = props;
-    console.log(infosCustomer)
 
     return (infosCustomer.map((Customer) => {
-        console.log(Customer)
         return (
             <p> Assento {Customer.idAssento}</p>
         )
@@ -98,10 +95,8 @@ function Assentos(props) {
 
 function Compradores(props) {
     const { infosCustomer } = props;
-    console.log(infosCustomer)
 
     return (infosCustomer.map((Customer) => {
-        console.log(Customer)
         return (<ul>
             <li> Nome: {Customer.nome}</li>
             <li> CPF: {Customer.cpf}</li>

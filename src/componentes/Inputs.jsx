@@ -108,7 +108,7 @@ function EachInput(props) {
             <input type="text" placeholder='Digite o seu nome...' value={nameInput} onChange={(e) => { setnameInput(e.target.value) }} />
             <p>CPF do comprador:</p>
             <input type="text" placeholder='Digite o seu CPF...' value={cpfInput} onChange={(e) => { setCpfInput(e.target.value) }} />
-            <button type='submit'> Reservar </button>
+            <button type='submit'> Reservar assento </button>
         </form>
     )
 }
@@ -122,6 +122,7 @@ function RequestPost(infosTopost, infosMovie) {
     
     const request = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", infosTopost)
     request.then(
-        () => { alert("Deu tudo certo"); navigate("/sucesso", { state: {infosMovie: infosMovie, infosCustomer:infosTopost.compradores} })}
+        () => { navigate("/sucesso", { state: {infosMovie: infosMovie, infosCustomer:infosTopost.compradores} })}
     )
+    request.catch(() =>{alert("Algo deu errado, por favor, recarregue a página!")})
 }

@@ -56,7 +56,6 @@ export default function Seats() {
     const [infoSeats, setInfoSeats] = useState({})
     const [inputsSeats, setInputsSeats] = useState([])
     const [placesToSelect, setplacesToSelect] = useState([])
-    console.log(placesToSelect)
 
     useEffect(() => {
         const request = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idHora}/seats`)
@@ -73,6 +72,8 @@ export default function Seats() {
             }
             setplacesToSelect([...allPlaces])
         })
+
+        request.catch(() =>{alert("Algo deu errado, por favor, recarregue a página!")})
     }, [])
 
     const string = JSON.stringify(infoSeats)
@@ -114,10 +115,15 @@ function EachSeat(props) {
     return placesToSelect.length === 0 ? "" : (
         seats.map((seat) => {
             let selected = placesToSelect[seat.name-1]
+
+            function numberseat(value){
+                return value < 10 ? "0" + value : value;
+            }
+
             return seat.isAvailable == true ? (
-                <Canclick selected={selected} key={seat.name + seat.id} onClick={() => selecionarLugar(seat)}> {seat.name}</Canclick>
+                <Canclick selected={selected} key={seat.name + seat.id} onClick={() => selecionarLugar(seat)}> { numberseat(seat.name)  }  </Canclick>
             ) : (
-                <Cannotclick key={seat.name + seat.id}> {seat.name}</Cannotclick>
+                <Cannotclick key={seat.name + seat.id} onClick={() => alert("Esse assento não está disponível")}> {numberseat(seat.name)}</Cannotclick>
             )
         })
     )
